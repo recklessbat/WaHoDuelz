@@ -1,5 +1,25 @@
 import { useState } from 'react';
 
+function getInitials(name) {
+  return name
+    .split(/\s+/)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 3);
+}
+
+function EliminationBadge({ cause }) {
+  if (!cause) return null;
+  if (cause.type === 'life') {
+    return <span className="elim-badge elim-life">40D</span>;
+  }
+  if (cause.type === 'commander') {
+    return <span className="elim-badge elim-commander">CD-{getInitials(cause.killerName)}</span>;
+  }
+  return null;
+}
+
 export default function MatchTracker({ matchHistory }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -57,6 +77,7 @@ export default function MatchTracker({ matchHistory }) {
                       <span className={`result-name ${rIdx === 0 ? 'bold' : ''}`}>
                         {result.name}
                       </span>
+                      <EliminationBadge cause={result.eliminationCause} />
                       <span className="result-life">{result.finalLife} HP</span>
                     </div>
                   ))}

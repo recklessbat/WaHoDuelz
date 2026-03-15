@@ -42,6 +42,7 @@ export default function MatchMatrix({ players, onMatchEnd, onBackToSetup }) {
       life: 40,
       eliminated: false,
       eliminationOrder: null,
+      eliminationCause: null,
       commanderDamage: players.map(() => 0),
       idx,
     }))
@@ -64,7 +65,7 @@ export default function MatchMatrix({ players, onMatchEnd, onBackToSetup }) {
         // Check life <= 0
         if (player.life <= 0) {
           newEliminationCounter++;
-          updated[pIdx] = { ...player, eliminated: true, eliminationOrder: newEliminationCounter };
+          updated[pIdx] = { ...player, eliminated: true, eliminationOrder: newEliminationCounter, eliminationCause: { type: 'life' } };
           changed = true;
           setShowElimination(player.name);
           setTimeout(() => setShowElimination(null), 3000);
@@ -74,7 +75,8 @@ export default function MatchMatrix({ players, onMatchEnd, onBackToSetup }) {
         player.commanderDamage.forEach((dmg, fromIdx) => {
           if (fromIdx !== pIdx && dmg >= 21 && !player.eliminated) {
             newEliminationCounter++;
-            updated[pIdx] = { ...updated[pIdx], eliminated: true, eliminationOrder: newEliminationCounter };
+            const killerName = state[fromIdx].name;
+            updated[pIdx] = { ...updated[pIdx], eliminated: true, eliminationOrder: newEliminationCounter, eliminationCause: { type: 'commander', killerName } };
             changed = true;
             setShowElimination(player.name);
             setTimeout(() => setShowElimination(null), 3000);
@@ -146,13 +148,13 @@ export default function MatchMatrix({ players, onMatchEnd, onBackToSetup }) {
     const results = [];
     const winnerPlayer = gameState.find((p) => !p.eliminated);
     if (winnerPlayer) {
-      results.push({ name: winnerPlayer.name, finalLife: winnerPlayer.life });
+      results.push({ name: winnerPlayer.name, finalLife: winnerPlayer.life, eliminationCause: null });
     }
     const eliminated = gameState
       .filter((p) => p.eliminated)
       .sort((a, b) => (b.eliminationOrder || 0) - (a.eliminationOrder || 0));
     eliminated.forEach((p) => {
-      results.push({ name: p.name, finalLife: p.life });
+      results.push({ name: p.name, finalLife: p.life, eliminationCause: p.eliminationCause });
     });
 
     onMatchEnd({ results });
@@ -164,6 +166,7 @@ export default function MatchMatrix({ players, onMatchEnd, onBackToSetup }) {
           life: 40,
           eliminated: false,
           eliminationOrder: null,
+          eliminationCause: null,
           commanderDamage: players.map(() => 0),
           idx,
         }))
@@ -184,6 +187,12 @@ export default function MatchMatrix({ players, onMatchEnd, onBackToSetup }) {
 
   return (
     <div className="match-matrix">
+      <button className="back-to-setup-btn" onClick={onBackToSetup} title="Back to Setup">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+        Setup
+      </button>
       <div className={gridClass}>
         {gameState.map((player, pIdx) => (
           <div
