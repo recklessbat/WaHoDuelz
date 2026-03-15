@@ -1,0 +1,891 @@
+/* ============================================
+   WaHo Duelz - Commander Life Tracker Styles
+   ============================================ */
+
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ============================================
+   Match Setup Screen
+   ============================================ */
+
+.setup-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #fafafa 0%, #f0f0f5 100%);
+}
+
+.setup-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eee;
+}
+
+.app-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+.app-subtitle {
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.setup-section {
+  margin-bottom: 28px;
+}
+
+.setup-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.player-count-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.count-btn {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #e8e8e8;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #999;
+  background: #fafafa;
+  transition: all 0.2s;
+}
+
+.count-btn.active {
+  border-color: #b19cd9;
+  color: #7c6daa;
+  background: #f3eef8;
+}
+
+.count-btn:hover:not(.active) {
+  border-color: #ddd;
+  background: #f5f5f5;
+}
+
+/* Player Config Rows */
+
+.players-config {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.player-config-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fcfcfc;
+}
+
+.player-number {
+  font-size: 12px;
+  font-weight: 700;
+  color: #bbb;
+  min-width: 24px;
+  text-align: center;
+}
+
+.avatar-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.avatar-preview {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-preview svg {
+  width: 40px;
+  height: 40px;
+}
+
+.avatar-options {
+  display: flex;
+  gap: 2px;
+}
+
+.avatar-option {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  padding: 2px;
+  border: 1.5px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  transition: all 0.15s;
+}
+
+.avatar-option.selected {
+  border-color: #b19cd9;
+  color: #7c6daa;
+  background: #f3eef8;
+}
+
+.avatar-option:hover:not(.selected) {
+  border-color: #ddd;
+}
+
+.avatar-option-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.avatar-option-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.player-name-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #444;
+  background: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.player-name-input:focus {
+  border-color: #b19cd9;
+}
+
+.player-name-input::placeholder {
+  color: #ccc;
+}
+
+.color-select {
+  padding: 8px 10px;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #666;
+  outline: none;
+  cursor: pointer;
+  min-width: 100px;
+  transition: border-color 0.2s;
+}
+
+.color-select:focus {
+  border-color: #b19cd9;
+}
+
+.start-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #b19cd9, #87CEEB);
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.start-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(177, 156, 217, 0.3);
+}
+
+.start-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   Match Matrix Screen
+   ============================================ */
+
+.match-matrix {
+  min-height: 100vh;
+  padding: 16px;
+  background: #f5f5f7;
+}
+
+.matrix-grid {
+  display: grid;
+  gap: 12px;
+  height: calc(100vh - 32px);
+}
+
+.grid-2 {
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+.grid-3 {
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid-3 .player-quadrant:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+.grid-4 {
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Player Quadrant */
+
+.player-quadrant {
+  border-radius: 16px;
+  border: 2px solid;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.player-quadrant.eliminated {
+  background-color: #f0f0f0 !important;
+  border-color: #ddd !important;
+}
+
+.player-quadrant.eliminated .quadrant-name,
+.player-quadrant.eliminated .life-total,
+.player-quadrant.eliminated .commander-name-abbr,
+.player-quadrant.eliminated .cmd-damage-value {
+  color: #bbb !important;
+  font-style: italic;
+}
+
+.quadrant-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  margin-bottom: 8px;
+}
+
+.quadrant-avatar-box {
+  width: 44px;
+  height: 44px;
+  border: 2px solid;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+  transition: border-color 0.5s;
+}
+
+.quadrant-avatar {
+  width: 34px;
+  height: 34px;
+  transition: color 0.5s;
+}
+
+.quadrant-avatar svg {
+  width: 100%;
+  height: 100%;
+}
+
+.quadrant-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #444;
+  transition: color 0.5s;
+}
+
+/* Life Section */
+
+.life-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0;
+  padding: 4px 0;
+}
+
+.life-total {
+  font-size: 64px;
+  font-weight: 700;
+  color: #333;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.5s;
+  min-width: 100px;
+  text-align: center;
+}
+
+.life-total:hover {
+  opacity: 0.7;
+}
+
+.life-edit-input {
+  font-size: 56px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  width: 120px;
+  border: 2px solid #b19cd9;
+  border-radius: 8px;
+  background: white;
+  outline: none;
+  padding: 4px;
+  font-family: inherit;
+}
+
+.life-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.life-btn {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #888;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.life-btn:hover:not(:disabled) {
+  border-color: #bbb;
+  background: white;
+  color: #555;
+}
+
+.life-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.life-btn.minus {
+  color: #e07070;
+}
+
+.life-btn.plus {
+  color: #70b070;
+}
+
+/* Commander Damage Section */
+
+.commander-damage-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.commander-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.commander-row-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.commander-avatar-mini {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+  transition: border-color 0.5s;
+}
+
+.commander-avatar-icon {
+  width: 16px;
+  height: 16px;
+  transition: color 0.5s;
+}
+
+.commander-avatar-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.commander-name-abbr {
+  font-size: 12px;
+  font-weight: 600;
+  color: #777;
+  letter-spacing: 0.5px;
+  transition: color 0.5s;
+}
+
+.commander-damage-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cmd-btn {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #999;
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.cmd-btn:hover:not(:disabled) {
+  border-color: #bbb;
+  background: white;
+}
+
+.cmd-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.cmd-damage-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #666;
+  min-width: 24px;
+  text-align: center;
+  transition: color 0.5s;
+}
+
+.cmd-damage-value.lethal {
+  color: #e05555;
+}
+
+/* ============================================
+   Elimination Animation
+   ============================================ */
+
+.elimination-animation {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(240, 240, 240, 0.85);
+  z-index: 10;
+  animation: fadeInOut 3s ease forwards;
+}
+
+.elimination-ghost {
+  animation: ghostFloat 2s ease-in-out infinite;
+}
+
+.elimination-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #999;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes ghostFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+/* ============================================
+   Victory Modal
+   ============================================ */
+
+.victory-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.victory-overlay.visible {
+  opacity: 1;
+}
+
+.victory-modal {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  animation: victoryBounce 0.6s ease;
+}
+
+@keyframes victoryBounce {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.victory-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  top: -10px;
+  background: #DAA520;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparklefall linear infinite;
+}
+
+@keyframes sparklefall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(400px) rotate(720deg); opacity: 0; }
+}
+
+.victory-crown {
+  margin-bottom: 8px;
+}
+
+.crown-svg {
+  width: 60px;
+  height: 40px;
+  animation: crownBob 2s ease-in-out infinite;
+}
+
+@keyframes crownBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.victory-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 12px;
+}
+
+.victory-avatar svg {
+  width: 100%;
+  height: 100%;
+}
+
+.victory-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #DAA520;
+  margin-bottom: 4px;
+}
+
+.victory-name {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.victory-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.victory-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.rematch-btn {
+  background: linear-gradient(135deg, #b19cd9, #87CEEB);
+  color: white;
+}
+
+.rematch-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(177, 156, 217, 0.3);
+}
+
+.new-setup-btn {
+  background: #f5f5f5;
+  color: #666;
+  border: 1.5px solid #e0e0e0;
+}
+
+.new-setup-btn:hover {
+  background: #eee;
+}
+
+/* ============================================
+   Match Tracker Sidebar
+   ============================================ */
+
+.tracker-toggle {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: white;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s;
+}
+
+.tracker-toggle:hover {
+  border-color: #ccc;
+  color: #666;
+}
+
+.tracker-toggle.open {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tracker-panel {
+  position: fixed;
+  top: 0;
+  left: -320px;
+  width: 300px;
+  height: 100vh;
+  background: white;
+  border-right: 1px solid #eee;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0);
+}
+
+.tracker-panel.open {
+  left: 0;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.08);
+}
+
+.tracker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.tracker-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #444;
+}
+
+.tracker-close {
+  color: #bbb;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.15s;
+}
+
+.tracker-close:hover {
+  color: #888;
+}
+
+.tracker-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.tracker-empty {
+  text-align: center;
+  color: #ccc;
+  font-size: 14px;
+  padding: 40px 0;
+}
+
+.match-record {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.match-record-header {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #eee;
+  background: #f5f5f5;
+}
+
+.match-record-results {
+  padding: 6px 0;
+}
+
+.match-result-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+}
+
+.match-result-row.winner {
+  background: rgba(218, 165, 32, 0.06);
+}
+
+.result-position {
+  min-width: 20px;
+  font-size: 11px;
+  color: #bbb;
+  text-align: center;
+}
+
+.result-position svg {
+  color: #DAA520;
+  fill: #DAA520;
+}
+
+.result-name {
+  flex: 1;
+  font-size: 13px;
+  color: #666;
+}
+
+.result-name.bold {
+  font-weight: 700;
+  color: #444;
+}
+
+.result-life {
+  font-size: 12px;
+  color: #bbb;
+}
+
+.tracker-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   Responsive adjustments
+   ============================================ */
+
+@media (max-width: 600px) {
+  .setup-card {
+    padding: 24px 16px;
+  }
+
+  .player-config-row {
+    flex-wrap: wrap;
+  }
+
+  .player-name-input {
+    min-width: 0;
+  }
+
+  .color-select {
+    min-width: 80px;
+    font-size: 12px;
+  }
+
+  .life-total {
+    font-size: 48px;
+  }
+
+  .life-edit-input {
+    font-size: 42px;
+    width: 100px;
+  }
+
+  .quadrant-name {
+    font-size: 14px;
+  }
+}
